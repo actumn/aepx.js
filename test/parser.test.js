@@ -14,11 +14,7 @@ describe('parser test', () => {
           console.log(filename);
           const file = path.join(inputPath, filename);
           const aepxJson = aepxParser.parseFileSync(file);
-          fs.writeFileSync(`${path.join(outputPath, filename)}.json`, JSON.stringify(aepxJson), (err) => {
-            if (err) {
-              console.error(err);
-            }
-          });
+          fs.writeFileSync(`${path.join(outputPath, filename)}.json`, JSON.stringify(aepxJson));
         });
     });
   });
