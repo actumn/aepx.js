@@ -22,3 +22,5 @@ aepx.parseFile('./input/empty.aepx', (err, project) => {
 
 aepx.parseFile('./input/empty.aepx')
   .then(project => console.log(project));
+
+console.log(aepx.parseFileSync('./input/empty.aepx'));
