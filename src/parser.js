@@ -280,7 +280,17 @@ function parseProject(project) {
 module.exports = {
   parse(data, handler) {
     switch (arguments.length) {
-      case 1: // callback api
+      case 1:
+        return new Promise((resolve, reject) => {
+          xml2jsparser.parseString(data, (err, target) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(parseProject(target.AfterEffectsProject));
+          });
+        });
+      case 2: // callback api
+      default:
         xml2jsparser.parseString(data, (err, target) => {
           if (err) {
             handler(err, null);
@@ -289,28 +299,45 @@ module.exports = {
           handler(null, result);
         });
         return null;
-      case 2:
-      default:
-        return new Promise((resolve, reject) => {
-          xml2jsparser.parseString(data, (err, target) => {
-            if (err) {
-              reject(err);
-            }
-            return parseProject(target.AfterEffectsProject);
-          });
-        });
     }
   },
   parseSync(data) {
     const target = xml2jsparser.parseStringSync(data);
     return parseProject(target.AfterEffectsProject);
   },
-  parseFile(filePath) {
-    return new Promise((resolve) => {
-      const data = fs.readFileSync(filePath);
-      const target = xml2jsparser.parseStringSync(data);
-      return resolve(parseProject(target.AfterEffectsProject));
-    });
+  parseFile(filePath, handler) {
+    switch (arguments.length) {
+      case 1:
+        return new Promise((resolve, reject) => {
+          fs.readFile(filePath, (err, data) => {
+            if (err) {
+              reject(err);
+            }
+            xml2jsparser.parseString(data, (error, target) => {
+              if (error) {
+                reject(error);
+              }
+
+              resolve(parseProject(target.AfterEffectsProject));
+            });
+          });
+        });
+      case 2: // callback api
+      default:
+        fs.readFile(filePath, (err, data) => {
+          if (err) {
+            handler(err, null);
+          }
+          xml2jsparser.parseString(data, (error, target) => {
+            if (error) {
+              handler(error, null);
+            }
+            const result = parseProject(target.AfterEffectsProject);
+            handler(null, result);
+          });
+        });
+        return null;
+    }
   },
   parseFileSync(filePath) {
     const data = fs.readFileSync(filePath);
