@@ -278,6 +278,33 @@ function parseProject(project) {
 }
 
 module.exports = {
+  parse(data, handler) {
+    switch (arguments.length) {
+      case 1: // callback api
+        xml2jsparser.parseString(data, (err, target) => {
+          if (err) {
+            handler(err, null);
+          }
+          const result = parseProject(target.AfterEffectsProject);
+          handler(null, result);
+        });
+        return null;
+      case 2:
+      default:
+        return new Promise((resolve, reject) => {
+          xml2jsparser.parseString(data, (err, target) => {
+            if (err) {
+              reject(err);
+            }
+            return parseProject(target.AfterEffectsProject);
+          });
+        });
+    }
+  },
+  parseSync(data) {
+    const target = xml2jsparser.parseStringSync(data);
+    return parseProject(target.AfterEffectsProject);
+  },
   parseFile(filePath) {
     return new Promise((resolve) => {
       const data = fs.readFileSync(filePath);
