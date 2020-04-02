@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   otst: 'ADBE Orientation',
   OvG2: 'ADBE Layer Overrides',
   tdgp: [

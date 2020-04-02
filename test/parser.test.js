@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import aepxParser from '../src/parser';
+const fs = require('fs');
+const path = require('path');
+const aepxParser = require('../src/parser');
 
 describe('parser test', () => {
   describe('aepx files', () => {

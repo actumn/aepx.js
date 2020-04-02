@@ -1,4 +1,3 @@
 -R spec
 --timeout 5000
 test/**/*.test.js
--r babel-core/register

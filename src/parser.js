@@ -1,7 +1,7 @@
-import fs from 'fs';
-import xml2jsparser from 'xml2js-parser';
-import hexConverter from './hexConverter';
-import specials from './specials';
+const fs = require('fs');
+const xml2jsparser = require('xml2js-parser');
+const hexConverter = require('./hexConverter');
+const specials = require('./specials');
 
 function parseTextDocument(document) {
   return document;
@@ -277,7 +277,7 @@ function parseProject(project) {
   };
 }
 
-export default {
+module.exports = {
   parseFile(filePath) {
     return new Promise((resolve) => {
       const data = fs.readFileSync(filePath);

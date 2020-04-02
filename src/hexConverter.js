@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   hexToDecimal(hex) {
     return parseInt(hex, 16);
   },

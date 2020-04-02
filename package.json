@@ -1,16 +1,15 @@
 {
-  "name": "aepx-to-json",
+  "name": "aepx",
   "version": "0.0.1",
   "description": "aepx to json coverter",
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint src test",
-    "dist": "babel src -d dist",
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actumn/aepx-to-json.git"
+    "url": "git+https://github.com/actumn/aepx.js.git"
   },
   "keywords": [
     "after",
@@ -20,16 +19,13 @@
   "author": "actumn814@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actumn/aepx-to-json/issues"
+    "url": "https://github.com/actumn/aepx.js/issues"
   },
-  "homepage": "https://github.com/actumn/aepx-to-json#readme",
+  "homepage": "https://github.com/actumn/aepx.js#readme",
   "dependencies": {
     "xml2js-parser": "^1.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",

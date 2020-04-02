@@ -1,5 +1,5 @@
-import { assert } from 'chai';
-import hexConverter from '../src/hexConverter';
+const { assert } = require('chai');
+const hexConverter = require('../src/hexConverter');
 
 describe('hexConverter test', () => {
   describe('hex to ascii when normal condition', () => {
