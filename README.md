@@ -1,3 +1,5 @@
+*Deprecated. please use https://github.com/boltframe/aftereffects-aep-parser*
+ 
 # aepx.js
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/actumn/aepx.js/blob/master/LICENSE)
 
